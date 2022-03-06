@@ -66,12 +66,12 @@ app.title = tabtitle
 
 ########### Set up the layout
 app.layout = html.Div(children=[
-    html.H1(myheading),
+#    html.H1(myheading),
     dcc.Graph(
         id='graph',
         figure=fig),
-    html.Br(),
-    html.A('Code on Github', href=githublink),
+#    html.Br(),
+#    html.A('Code on Github', href=githublink),
 ])
 
 if __name__ == '__main__':
