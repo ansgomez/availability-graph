@@ -55,7 +55,7 @@ for i in range(len(fig.data)):
 
 sliders = [dict(
     active=0,
-    # currentvalue={"prefix": " λ Failure rate (failures per hour): "},
+    currentvalue={"prefix": " λ Failure rate (failures per hour): "},
     pad={"t": 50},
     steps = steps[::10]
 )]
