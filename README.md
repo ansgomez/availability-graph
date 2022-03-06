@@ -38,3 +38,7 @@ Here is an initial link to graph [a link](http://availability-graph.herokuapp.co
 ---
 
 [According to user's tutorial](https://austinlasseter.medium.com/how-to-deploy-a-simple-plotly-dash-app-to-heroku-622a2216eb73)
+
+
+Contributors: 
+* https://github.com/dflymegold/

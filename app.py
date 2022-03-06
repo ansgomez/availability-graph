@@ -26,19 +26,21 @@ for step in np.arange(0,101,0.5):
     fig.add_trace(
         go.Scatter(
             visible=False,
-            line=dict(color="#00CED1", width=6),
+            line=dict(color="#027D3F", width=6),
             name="𝜈 = " + str(step),
             x=np.arange(0,101,1),
             y = ((mu_arg(step)/(lambda_arg(step)+mu_arg(step)))+(lambda_arg(step)/(lambda_arg(step)+mu_arg(step)))*
                  1/np.exp(-((lambda_arg(step)+mu_arg(step))*np.arange(0,101,1))))))
 
-fig.data[10].visible = True
+fig.data[0].visible = True
 
 steps = []
-for i in range(len(fig.data)):
+slider_data = np.arange(0,10,1)
+#for i in range(len(fig.data)):
+for i in slider_data:
     step = dict(
         method="update",
-        args=[{"visible": [False] * len(fig.data)},
+        args=[{"visible": [False] * len(slider_data)},
               {"title": "λ Failure rate (failures per hour): " + str(0.1*i)}],
         label = str("%.2f" %(0.1*i))
     )
