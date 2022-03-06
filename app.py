@@ -40,9 +40,9 @@ steps = []
 for i in range(len(fig.data)):
     i2 = 0.1*i
     steady_state = mu_arg(i2) / (mu_arg(i2)+lambda_arg(i2))
-    mu_str = '<b>Repair rate:</b> {} per hour'.format(mu_arg(i2))
-    lamba_str = '<b>Failure rate:</b> {} per hour'.format(lambda_arg(i2))
-    ss_str = '<b>Steady state availability:</b> {0:.2f}'.format(steady_state)
+    mu_str = '<b>µ</b>= {} /h'.format(mu_arg(i2))
+    lamba_str = '<b>λ</b>= {} /h'.format(lambda_arg(i2))
+    ss_str = '<b>A(∞)</b>= {0:.2f}'.format(steady_state)
     title_str = " "+mu_str+"     "+lamba_str+"     "+ss_str+"<br> "
     step = dict(
         method="update",
