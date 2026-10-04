@@ -1,44 +1,30 @@
-This repo is made to display interactive graph of availability that depends on two parameters lambda and mu, but as well as plotly allows to create one slider - constaints will depend on parameters named as hour.
+# availability-graph
 
-So lambda = 1-10/hours
+Interactive plot of the availability A(t) of a two-state repairable system:
 
-mu = 1/hours
+A(t) = μ/(λ+μ) + λ/(λ+μ) · e^(−(λ+μ)t)
 
-Here is an initial link to graph [a link](http://availability-graph.herokuapp.com/)
+with a slider over the failure rate λ (failures per hour) and a fixed repair rate μ = 1 per hour.
+The plot title shows the steady-state availability A(∞) = μ/(λ+μ).
 
+**Live:** <https://ansgomez.github.io/availability-graph/>
 
+## How it works
 
-# How to deploy your own heroku app
+`app.py` builds a single Plotly figure. The λ slider is part of the figure itself, so no
+server is needed: `build_static.py` exports it to `docs/index.html`, which GitHub Pages serves.
 
-1. Fork that repository to make all necessary files available for deploying on heroku  ( push that button  `fork`) / or you could download repo using 
+```bash
+python -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt
+python build_static.py   # regenerate docs/index.html after changing app.py
+python app.py            # optional: run as a Dash app on http://127.0.0.1:8050
+```
 
-![IMG](https://i.imgur.com/MXxwxPV.png)
+The app was originally deployed on Heroku (`availability-graph.herokuapp.com`), which ended
+its free tier in 2022.
 
+## Contributors
 
-
-![IMG](https://i.imgur.com/bMkYjNP.png)
-
-
-2. Login to Heroku (or if you don't have an account - register) and create new app 
-
-![Heroku dashboard](https://miro.medium.com/max/1400/1*SmjIEaSRd6bCofGNG42YFw.png)
-
-3. Select `github` as your deployment method, and then search for your repo (note that it will appear under your name, not mine, since you already forked it!). Go ahead and pick “connect”.
-
-![Github method](https://miro.medium.com/max/1400/1*9DkMgBhoZzo_AaxM-NyoDg.png)
-
-4. There will be 2 option how to deploy branches : manual or authomatic. Authomatic deployment method will track all commit in branch and in case of files will be changed - deployment authomaticaly displays on app link. In case of manual deploy - every changes should be deployed manualy on the next option of heroku dashboard 
-
-![Manual](https://miro.medium.com/max/1400/1*ZC0lXi42U6vvSSTYK1wKew.png)
-![Manual](https://miro.medium.com/max/1400/1*NLn1SLM_Ds8mEh7AqK5DgQ.png)
-
-5. Your app is ready for operation, in my case it is available on next [link](http://availability-graph.herokuapp.com/)
-
-
----
-
-[According to user's tutorial](https://austinlasseter.medium.com/how-to-deploy-a-simple-plotly-dash-app-to-heroku-622a2216eb73)
-
-
-Contributors: 
-* https://github.com/dflymegold/
+* [Denys Harshanov](https://github.com/dflymegold) (original Dash app and Heroku deployment)
+* Andres Gomez
